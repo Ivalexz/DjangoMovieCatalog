@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {%block title%} Каталог фільмів {% endblock %} </title>
+    <link rel="icon" href="https://static.vecteezy.com/system/resources/thumbnails/042/236/044/small_2x/ai-generated-popcorn-in-striped-box-isolated-on-transparent-background-png.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+        *{
+          padding: 0;
+          margin: 0;
+          text-decoration: none;
+          list-style: none;
+          box-sizing: border-box;
+        }
+        body{
+          background-color: #141414;
+        }
+        .flex {
+          display: flex;
+          align-items: center;
+        }
+        nav{
+          height: 70px;
+          width: 100%;
+          gap:350px;
+          border-bottom: 1px solid #393838;
+          border-radius: 5px;
+        }
+        .logo{
+          color: #B20710;
+          font-size: 30px;
+          padding-left:80px;
+          text-transform: uppercase;
+          font-family: "Ancizar Sans", sans-serif;
+          font-weight: bold;
+        }
+        .menu{
+          gap:70px;
+        }
+        .menu li a{
+          font-family: "PT Sans", sans-serif;
+          padding: 3px 5px;
+          color: #fff;
+          font-size: 17px;
+          text-transform: uppercase;
+        }
+        .menu li a:hover{
+          color: #B20710;
+          border-bottom: 1px solid #B20710;
+          transition: 0.5s ease;
+        }
+
+        h1 {
+          margin: 20px;
+          color:#fff;
+          text-align: center;
+          font-family: "PT Sans", sans-serif;
+          font-size: 40px;
+          text-transform: uppercase;
+        }
+
+        .styled_form {
+          height: 80px;
+          display: flex;
+          align-items: center;
+          margin: 40px 20px;
+          padding: 10px;
+          background-color: #211f1f;
+          border: 1px solid #393838;
+          border-radius: 10px;
+          font-family: "PT Sans", sans-serif;
+          color: #fff;
+        }
+
+        .styled_form label {
+          text-align: center;
+          margin: 0px 20px;
+          font-weight: bold;
+          color: #fff;
+          font-size: 14px;
+        }
+        .styled_form input[type="number"]{
+          width:70px;
+          padding: 10px;
+          background-color: #2c2c2c;
+          border: 1px solid #444;
+          border-radius: 5px;
+          color: #fff;
+          font-size: 14px;
+        }
+        .styled_form input[type="url"],
+        .styled_form input[type="text"],
+        .styled_form select {
+          width: 100%;
+          padding: 10px;
+          background-color: #2c2c2c;
+          border: 1px solid #444;
+          border-radius: 5px;
+          color: #fff;
+          font-size: 14px;
+        }
+
+        .styled_form button {
+          margin-left:30px;
+          margin-right:20px;
+          background-color: #B20710;
+          color: #fff;
+          padding: 12px 25px;
+          border: none;
+          border-radius: 5px;
+          font-size: 16px;
+          text-transform: uppercase;
+          cursor: pointer;
+          font-weight: bold;
+          transition: 0.3s ease;
+        }
+
+        .styled_form button:hover {
+          background-color: #8c060d;
+        }
+
+    </style>
+    {% block style %}{%endblock%}
+</head>
+<body>
+<header>
+  <nav class="flex">
+    <p class="logo">world of movies</p>
+    <ul class="menu flex">
+      <li><a href="/">Головна</a></li>
+      <li><a href="/movie/add/">Додати новий фільм</a></li>
+      <li><a href="/api/movies/">Переглянути JSON</a></li>
+    </ul>
+  </nav>
+</header>
+{% block content %}{% endblock %}
+<footer>Movie club. All rights are reserved.</footer>
+</body>
+</html>

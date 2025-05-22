@@ -1,0 +1,14 @@
+{% extends 'app/base.html' %}
+
+{% block title %} Додати фільм {% endblock %}
+
+{% block content %}
+    <h1>Додати фільм</h1>
+
+    <form method="post" class="styled_form">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <button type="submit">Додати</button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'app/base.html' %}
+
+{% block title %} Головна {% endblock %}
+
+{% block style %}
+<style>
+    .movie_grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 40px;
+      padding: 0px 20px;
+    }
+
+    .movie_card_link {
+      text-decoration: none;
+      color: inherit;
+    }
+    .movie_card {
+      background-color: #1c1c1c;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      color: #fff;
+      font-family: "PT Sans", sans-serif;
+      box-shadow: rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .movie_card:hover {
+      transform: scale(1.03);
+    }
+    .movie_card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .movie_card h2 {
+      max-width: 210px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #fff;
+      text-transform: uppercase;
+      word-wrap: break-word;
+    }
+
+    .movie_card p {
+      max-width: 210px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #bbb;
+      word-wrap: break-word;
+    }
+    .movie_buttons a {
+      display: inline-block;
+      margin: 5px;
+      padding: 8px 12px;
+      font-size: 14px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      background-color: #555;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    .movie_buttons a:hover {
+            background-color: #777;
+    }
+
+    .movie_buttons .delete {
+      background-color: #B20710;
+    }
+
+    .movie_buttons .delete:hover {
+      background-color: #8c060d;
+    }
+    </style>
+{%endblock%}
+
+{% block content %}
+<h1>Каталог фільмів</h1>
+    <form method="GET" class="styled_form">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <button type="submit">Пошук</button>
+    </form>
+{% if movies %}
+ <div class="movie_grid">
+    {% for movie in movies %}
+    <div class="movie_card">
+        <a href="{% url 'app:movie_details' movie.id %}" class="movie_card_link">
+        {% if movie.cover %}
+        <img src="{{ movie.cover }}" alt="обкладинка">
+        {% else %}
+        <img src="https://www.survivorsuk.org/wp-content/uploads/2017/01/no-image.jpg" alt="обкладинка відсутня">
+        {% endif %}
+        <h2>{{ movie.title }}</h2>
+        <p>{{ movie.director }}</p>
+             </a>
+        <div class="movie_buttons">
+            <a href="{% url 'app:update_movie' movie.id %}">Редагувати</a>
+            <a href="{% url 'app:delete_movie' movie.id %}" class="delete">Видалити</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<h1>Результатів немає :(</h1>
+{% endif %}
+{% endblock %}
+

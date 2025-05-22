@@ -1,0 +1,69 @@
+{% extends 'app/base.html' %}
+
+{% block title %} Про фільм {% endblock %}
+ {% block style %}
+<style>
+    .movie_card_wrapper {
+      display: flex;
+      justify-content: center;
+    }
+    .movie_card {
+      display: flex;
+      align-items: center;
+      gap:50px;
+      width: 700px;
+      background-color: #1c1c1c;
+      padding: 15px;
+      border-radius: 15px;
+      text-align: left;
+      color: #fff;
+      font-family: "PT Sans", sans-serif;
+      box-shadow: rgba(0, 0, 0, 0.5);
+    }
+    .movie_card img {
+      margin:10px;
+      width: 300px;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .movie_card h2 {
+      max-width: 400px;
+      text-align: left;
+      font-size: 33px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      color: #fff;
+      text-transform: uppercase;
+      word-wrap: break-word;
+    }
+
+    .movie_card p {
+      max-width: 400px;
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #bbb;
+      word-wrap: break-word;
+    }
+</style>
+{%endblock%}
+{% block content %}
+    <h1>Про фільм</h1>
+<div class="movie_card_wrapper">
+    <div class="movie_card">
+        {% if movie.cover %}
+            <img src="{{ movie.cover }}" alt="обкладинка">
+        {% else %}
+            <img src="https://www.survivorsuk.org/wp-content/uploads/2017/01/no-image.jpg" alt="обкладинка відсутня">
+        {% endif %}
+        <div>
+            <h2>{{ movie.title }}</h2>
+            <p><strong>Режисер:</strong> {{ movie.director }}</p>
+            <p><strong>Рік:</strong> {{ movie.year }}</p>
+            <p><strong>Жанр:</strong> {{ movie.genre }}</p>
+            <p><strong>Рейтинг:</strong> {{ movie.rating }}</p>
+        </div>
+    </div>
+    </div>
+{% endblock %}

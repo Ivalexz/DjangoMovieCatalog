@@ -1,0 +1,14 @@
+{% extends 'app/base.html' %}
+
+{% block title %} Оновити фільм {% endblock %}
+
+{% block content %}
+    <h1>Редагувати інфорацію про фільм</h1>
+
+    <form method="post" class="styled_form">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <button type="submit">Редагувати</button>
+    </form>
+
+{% endblock %}
