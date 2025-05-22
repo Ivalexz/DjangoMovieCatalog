@@ -1,1 +1,1 @@
-web: gunicorn world_of_movies.wsgi
+web: gunicorn world_of_movies.wsgi --log-file - --access-logfile - --workers 2 --bind 0.0.0.0:$PORT
