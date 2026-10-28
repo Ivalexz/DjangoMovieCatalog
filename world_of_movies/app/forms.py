@@ -21,7 +21,6 @@ class AddMovieForm(forms.Form):
     year=forms.IntegerField(
         label="Рік",
         min_value=1896,
-        max_value=2025,
         required=True,
         widget=forms.NumberInput(attrs={'class': 'form-control'})
     )
@@ -61,7 +60,6 @@ class UpdateMovieForm(forms.Form):
         label="Рік",
         required=False,
         min_value=1896,
-        max_value=2025,
         widget=forms.NumberInput(attrs={'class': 'form-control'})
     )
     genre = forms.CharField(
@@ -101,14 +99,12 @@ class SearchMovieForm(forms.Form):
         label="Мінімальний рік",
         required=False,
         min_value=1896,
-        max_value=2025,
         widget=forms.NumberInput(attrs={'class': 'form-control'})
     )
     max_year = forms.IntegerField(
         label="Максимальний рік",
         required=False,
         min_value=1896,
-        max_value=2025,
         widget=forms.NumberInput(attrs={'class': 'form-control'})
     )
     min_rating = forms.FloatField(
