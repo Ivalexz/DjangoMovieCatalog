@@ -6,6 +6,8 @@ from world_of_movies.app.forms import AddMovieForm, UpdateMovieForm, SearchMovie
 from world_of_movies.app.models import Movie
 from world_of_movies.app.serializers import MovieSerializer
 
+from datetime import date
+
 
 def get_all_movies(request): # функція і фільтрує і виводить усі фільми
     form=SearchMovieForm(request.GET or None)
@@ -13,7 +15,7 @@ def get_all_movies(request): # функція і фільтрує і вивод�
 
     if form.is_valid():
         min_year=form.cleaned_data.get("min_year") or 1896
-        max_year=form.cleaned_data.get("max_year") or 2025
+        max_year=form.cleaned_data.get("max_year") or date.today().year
         min_rating = form.cleaned_data.get("min_rating") or 0
         max_rating = form.cleaned_data.get("max_rating") or 5
         title = form.cleaned_data.get("title")
